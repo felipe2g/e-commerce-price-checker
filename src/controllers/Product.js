@@ -1,6 +1,5 @@
 const axios = require('axios');
-const jsdom = require('jsdom');
-const { JSDOM } = jsdom;
+
 
 const getInfoProduct = require('../utils/getInfoProduct');
 
@@ -11,7 +10,13 @@ module.exports = {
     
         const productsInfo = await getInfoProduct(104920);
 
-        console.log(productsInfo);
+        //memoria ram = 104920
+        //processador = 87400
+        //drone =
+        //gabinete = 
+        //ps4 =  
+
+        console.log("Produto " + productsInfo);
 
     }
 }
