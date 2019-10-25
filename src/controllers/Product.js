@@ -8,7 +8,7 @@ module.exports = {
 
         const url = 'https://www.kabum.com.br/produto/104920';
     
-        const productsInfo = await getInfoProduct(104920);
+        const productsInfo = await getInfoProduct(106892);
 
         //memoria ram = 104920
         //processador = 87400
@@ -16,7 +16,7 @@ module.exports = {
         //gabinete = 
         //ps4 =  
 
-        console.log("Produto " + productsInfo);
+        res.send(productsInfo);
 
     }
 }

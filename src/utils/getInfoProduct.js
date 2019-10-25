@@ -21,20 +21,28 @@ module.exports = async function(productId) {
     const normalPrice = (dom.window.document.querySelector(".preco_normal").textContent).replace(/[^\d\,]/g, "");
 
     //Get the sections
-    const sections = (dom.window.document.querySelectorAll(".links_det li"));
+    const sectionsHtml = dom.window.document.querySelectorAll(".links_det li");
 
-    const sectionArray = Array.from(sections);
+    const sectionArray = Array.from(sectionsHtml);
+
+    let sections = [];
+
+    for (var i = 0; i < sectionArray.length; i++){  
+      sections.push(((sectionArray[i].textContent).replace(">", "")).trim());
+    }
+
+  function onlyUnique(value, index, self) { 
+    return self.indexOf(value) === index;
+  }
+
     const jsonReturn = {
-
       "name": productName,
       "discountPrice": discountPrice,
       "normalPrice": normalPrice,
-      "sections": sections
+      "sections": sections.filter(onlyUnique)
     }
 
-    // return JSON.stringify(jsonReturn);
-    return sectionArray;
+    return JSON.stringify(jsonReturn);
 
-
-    
 }
+
