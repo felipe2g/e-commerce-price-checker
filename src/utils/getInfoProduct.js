@@ -10,7 +10,7 @@ module.exports = async function(productId) {
         responseEncoding: 'binary'
       });
 
-    const dom = new JSDOM(response.data);
+    const dom = new JSDOM(response.data, { includeNodeLocations: true });
     //Get the product name
     const productName = dom.window.document.querySelector(".titulo_det").textContent;
 
@@ -35,11 +35,16 @@ module.exports = async function(productId) {
     return self.indexOf(value) === index;
   }
 
+  //Get the thumbnail img
+  const thumbnail = dom.window.document.querySelectorAll(".slider li img ");
+
+  //Return the sections
     const jsonReturn = {
+      "sections": sections.filter(onlyUnique),
+      "code": productId,
       "name": productName,
       "discountPrice": discountPrice,
       "normalPrice": normalPrice,
-      "sections": sections.filter(onlyUnique)
     }
 
     return JSON.stringify(jsonReturn);
