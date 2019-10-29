@@ -15,10 +15,13 @@ module.exports = async function(productId) {
     const productName = dom.window.document.querySelector(".titulo_det").textContent;
 
     //Get discount price
-    const discountPrice = (dom.window.document.querySelector(".preco_desconto").textContent).replace(/[^\d\,]/g, "");
+    const discountPrice = (dom.window.document.querySelector(".preco_desconto"));
 
     //Get the normal price
-    const normalPrice = (dom.window.document.querySelector(".preco_normal").textContent).replace(/[^\d\,]/g, "");
+    const normalPrice = (dom.window.document.querySelector(".preco_normal"));
+
+    if(!discountPrice && !normalPrice) {console.log('produto em promoção')}
+      else{console.log('produto em preço normal')}
 
     //Get the sections
     const sectionsHtml = dom.window.document.querySelectorAll(".links_det li");
@@ -36,7 +39,7 @@ module.exports = async function(productId) {
   }
 
   //Get the thumbnail img
-  const thumbnail = dom.window.document.querySelectorAll(".slider li img ");
+  // const thumbnail = dom.window.document.querySelectorAll(".slider li img ");
 
   //Return the sections
     const jsonReturn = {
