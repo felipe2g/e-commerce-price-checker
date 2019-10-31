@@ -10,18 +10,31 @@ module.exports = async function(productId) {
         responseEncoding: 'binary'
       });
 
+    let promotion = false
+
     const dom = new JSDOM(response.data, { includeNodeLocations: true });
     //Get the product name
     const productName = dom.window.document.querySelector(".titulo_det").textContent;
 
-    //Get discount price
-    const discountPrice = (dom.window.document.querySelector(".preco_desconto"));
 
-    //Get the normal price
-    const normalPrice = (dom.window.document.querySelector(".preco_normal"));
+    let discountPrice = (dom.window.document.querySelector(".preco_desconto"));
+    let normalPrice = (dom.window.document.querySelector(".preco_normal"));
 
-    if(!discountPrice && !normalPrice) {console.log('produto em promoção')}
-      else{console.log('produto em preço normal')}
+    console.log("discountprice " + discountPrice)
+    console.log("normalPrice " + normalPrice)
+    console.log(!promotion)
+    
+
+    if(!discountPrice && !normalPrice) {
+      discountPrice = (dom.window.document.querySelector(".preco_desconto-cm").textContent).replace(/[^\d\,]/g, "");
+      normalPrice = (dom.window.document.querySelector(".preco_desconto_avista-cm").textContent).replace(/[^\d\,]/g, "");
+      promotion = true;
+    } else {
+      discountPrice = (discountPrice.textContent).replace(/[^\d\,]/g, "");
+      normalPrice = (normalPrice.textContent).replace(/[^\d\,]/g, "");
+    }
+
+    console.log(!promotion)
 
     //Get the sections
     const sectionsHtml = dom.window.document.querySelectorAll(".links_det li");
@@ -38,19 +51,24 @@ module.exports = async function(productId) {
     return self.indexOf(value) === index;
   }
 
-  //Get the thumbnail img
-  // const thumbnail = dom.window.document.querySelectorAll(".slider li img ");
-
-  //Return the sections
+  if(!promotion) {
     const jsonReturn = {
       "sections": sections.filter(onlyUnique),
-      "code": productId,
-      "name": productName,
-      "discountPrice": discountPrice,
-      "normalPrice": normalPrice,
+      productId,
+      productName,
+      discountPrice,
+      normalPrice,
     }
-
     return JSON.stringify(jsonReturn);
-
+   }else {
+    const jsonReturn = {
+      "sections": sections.filter(onlyUnique),
+      productId,
+      productName,
+      discountPrice,
+      normalPrice,
+      promotion,
+    }
+    return JSON.stringify(jsonReturn);
+  }
 }
-

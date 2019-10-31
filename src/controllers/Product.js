@@ -8,8 +8,11 @@ module.exports = {
 
         const url = 'https://www.kabum.com.br/produto/104920';
     
-        const productsInfo = await getInfoProduct(94483);
+        const productsInfo = await getInfoProduct(95971);
 
+        //Código sem promoção acima, apenas pegar um único preço.
+
+        
         //memoria ram = 104920
         //processador = 87400
         //drone =
