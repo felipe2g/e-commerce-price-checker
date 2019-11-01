@@ -10,7 +10,7 @@ module.exports = {
     
         const productsInfo = await getInfoProduct(95971);
 
-        //Código sem promoção acima, apenas pegar um único preço.
+        //Código sem promoção acima, apenas pegar um único preço. 95971
 
         
         //memoria ram = 104920
