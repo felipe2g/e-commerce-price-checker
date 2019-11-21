@@ -4,11 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js --require test/setup.js"
   },
   "dependencies": {
     "axios": "^0.19.0",
     "express": "^4.17.1",
+    "jquery": "^3.4.1",
     "jsdom": "^15.2.0",
     "nodemon": "^1.19.4"
   }
