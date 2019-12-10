@@ -1,3 +1,4 @@
+require('dotenv/config');
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
@@ -9,7 +10,7 @@ module.exports = async function(productId) {
         'setup.js'
     ]
   });
-
+    
     const { dataLayer } = window;
     return JSON.stringify(dataLayer);
 }
