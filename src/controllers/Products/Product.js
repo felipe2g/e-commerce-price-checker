@@ -1,7 +1,7 @@
 const getInfoProduct = require('../../utils/getInfoProduct');
 
 module.exports = {
-    async index(req, res) {
+    async show(req, res) {
     
         const productsInfo = await getInfoProduct(req.params.id);
         

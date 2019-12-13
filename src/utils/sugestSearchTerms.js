@@ -1,21 +1,15 @@
-const jsdom = require('jsdom');
-const {JSDOM} = jsdom;
+const axios = require('axios');
 
 module.exports = async function(term) {
-    // const dom = await JSDOM.fromURL(`https://www.kabum.com.br/cgi-local/site/busca/autocomplete.cgi?string=${term}`, { includeNodeLocations: true });
 
-    // console.log(dom.window.document.querySelector("img").getAttribute('src');
-
-    // return JSON.stringify(dom.window)
-
-    JSDOM.fromURL(`https://www.kabum.com.br/cgi-local/site/busca/autocomplete.cgi?string=${term}`).then(dom => {
     
-        // console.log(dom.serialize())
-        // return dom.serialize();
 
-        let table = dom.window.document.querySelectorAll('#table2 td')[2].getAttribute('href');
+    try{
+      const sugestionProduct = await axios.get(`https://servicespub.prod.api.aws.grupokabum.com.br/listagem/v1/autocomplete?string=${term}`)
+      return sugestionProduct.data;
+    } catch(e) {
+      console.error('error' + e)
+      return null
+    }
 
-        console.log(table)
-
-    });
 }
