@@ -13,18 +13,25 @@ module.exports = {
           
           let re1 = /(<script type="application\/ld\+json">)[\s\S]*?(<\/script>)/g;
           let re2 = /({)[\s\S]*(})/g;
+          let re3 = /([0-9])/;
 
           const string = $("head").html();
+          // const priceProduct = ($("#valParc").html()).match(re3);
+
+          // console.log(priceProduct);
 
           const scripts = string.match(re1);
 
-          const selectedProduct = (scripts[0].match(re2));
+          const selectedProduct = JSON.parse((scripts[0].match(re2)));
 
-          res.send(JSON.stringify(selectedProduct));
+          delete selectedProduct.brand;
+          delete selectedProduct.sku;
+          delete selectedProduct.description;
+          delete selectedProduct.review;
+          
+          // selectedProduct.fullPrice = priceProduct;
 
-          // const productInfo = JSON.parse(string.match(re));
-
-          // res.send(productInfo);
+          // res.send(selectedProduct);
 
         }
       });
