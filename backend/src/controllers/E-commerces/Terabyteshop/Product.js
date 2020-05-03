@@ -8,6 +8,7 @@ module.exports = {
     axios.get(`https://www.terabyteshop.com.br/produto/${productId}/a`)
       .then((response) => {
         if(response.status === 200) {
+          const sucess = true;
           const html = response.data;
           var $ = cheerio.load(html, {xmlMode: true});
           
@@ -15,25 +16,28 @@ module.exports = {
           let re2 = /({)[\s\S]*(})/g;
           let re3 = /([0-9])/;
 
-          const string = $("head").html();
-          // const priceProduct = ($("#valParc").html()).match(re3);
+          const string = ($("head").html()).replace(/@/g, "");
+          const priceProduct = ($("#valParc"))[1].children[0].data.replace(/R\$ /g, "").replace(",", ".");
 
-          // console.log(priceProduct);
+          const scripts = (string.match(re1));
 
-          const scripts = string.match(re1);
+          const selectedProduct = JSON.parse(((scripts[0].match(re2))));
 
-          const selectedProduct = JSON.parse((scripts[0].match(re2)));
+          const product = {
+            description: selectedProduct.name,
+            code: selectedProduct.mpn,
+            discountPrice: Number(selectedProduct.offers.price),
+            fullPrice: Number(priceProduct),
+            photos: selectedProduct.image,
+            sucess
+          };
 
-          delete selectedProduct.brand;
-          delete selectedProduct.sku;
-          delete selectedProduct.description;
-          delete selectedProduct.review;
-          
-          // selectedProduct.fullPrice = priceProduct;
-
-          // res.send(selectedProduct);
+          res.send(product);
 
         }
+      })
+      .catch(error=>{
+        res.json({"error":true})
       });
   }
 };
