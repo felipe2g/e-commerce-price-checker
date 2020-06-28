@@ -1,14 +1,14 @@
-const fetch = require('node-fetch');
+const fetch = require("node-fetch");
 const cheerio = require("cheerio");
 
 class Terabyte {
   
   async getProduct(id){
 
-      fetch(`https://www.terabyteshop.com.br/produto/${id}/a`, {
-        method: 'GET',
-        headers: {}
-      })
+    fetch(`https://www.terabyteshop.com.br/produto/${id}/a`, {
+      method: "GET",
+      headers: {}
+    })
       .then(response => {
         if(response.status === 200) {
           const sucess = true;
@@ -17,7 +17,6 @@ class Terabyte {
           
           let re1 = /(<script type="application\/ld\+json">)[\s\S]*?(<\/script>)/g;
           let re2 = /({)[\s\S]*(})/g;
-          let re3 = /([0-9])/;
         
           const string = ($("head").html()).replace(/@/g, "");
           // const priceProduct = ($("#valParc"))[1].children[0].data.replace(/R\$ /g, "").replace(",", ".");
@@ -38,6 +37,6 @@ class Terabyte {
           return product;
         }
       });
-    }
+  }
 }
 module.exports = Terabyte;

@@ -12,12 +12,13 @@ class Kabum {
 
     const product = {
       description: selectedProduct.nome,
+      disponibility: selectedProduct.disponibilidade,
       code: productCode,
       discountPrice: selectedProduct.preco_desconto,
       fullPrice: selectedProduct.preco,
       photos: selectedProduct.fotos,
       sucess: true
-    }
+    };
 
     return product;
   }

@@ -1,4 +1,4 @@
-const utilKabum = require('../../../utils/E-commerces/Kabum');
+const utilKabum = require("../../../utils/E-commerces/Kabum");
 
 module.exports = {
   async show(req, res) {
