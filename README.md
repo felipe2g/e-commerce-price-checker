@@ -11,16 +11,6 @@
 
 <br>
 
-### :rocket: Tecnologias usadas
-Este maravilindo projeto foi desenvolvido com as seguintes tecnologias:
-- [Node.js](https://nodejs.org/en/)
-- [Express](https://expressjs.com/pt-br/)
-- [Nodemon](https://www.npmjs.com/package/nodemon)
-- [Axios](https://www.npmjs.com/package/axios)
-- [Cors](https://www.npmjs.com/package/cors)
-- [Eslint](https://www.npmjs.com/package/eslint)
-- [Jest](https://www.npmjs.com/package/jest)
-
 ### :recycle: Como contribuir
 
 - Fork esse repositório;
@@ -31,12 +21,6 @@ Este maravilindo projeto foi desenvolvido com as seguintes tecnologias:
 ### :memo: Licença
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
-### :muscle: Quem deu aquela força para não desistir?
-
-[na comunidade devs :rocket:](https://discord.gg/5Vdw2cX) <br>
-[bajinho](https://github.com/bajinho) <br>
-[skymaze](https://github.com/GSTJ) <br>
 
 ### :star: Mídia
 

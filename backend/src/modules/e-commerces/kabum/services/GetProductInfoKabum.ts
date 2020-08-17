@@ -1,8 +1,17 @@
-const axios = require("axios");
+import axios from 'axios';
 
-class Kabum {
-  
-  async getProduct(id){
+interface Response {
+  description: string;
+  disponibility: string;
+  code: string;
+  discountPrice: string;
+  fullPrice: string;
+  photos: [];
+  sucess: boolean;
+}
+
+class GetProductInfoKabum {
+  public async execute(id: string): Promise<Response>{
     const productInfo = await axios.get(`https://servicespub.prod.api.aws.grupokabum.com.br/descricao/v1/descricao/produto/${id}`);
 
     const selectedProduct = productInfo.data;
@@ -22,7 +31,6 @@ class Kabum {
 
     return product;
   }
-
 }
 
-module.exports = Kabum;
+export default GetProductInfoKabum;
