@@ -18,6 +18,14 @@
 - Commit suas mudanças: `git commit -m 'feat: My new feature'`
 - Push a sua branch: `git push origin my-feature`
 
+### :shopping_cart: E-commerces disponíveis
+
+- [x] [Kabum](https://www.kabum.com.br/)
+- [x] [Pichau](https://www.pichau.com.br/)
+- [x] [Terabyteshop](https://www.terabyteshop.com.br/)
+- [ ] [Magazine Luiza](https://www.magazineluiza.com.br/)
+- [ ] [Amazon](https://www.amazon.com.br/)
+
 ### :memo: Licença
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
