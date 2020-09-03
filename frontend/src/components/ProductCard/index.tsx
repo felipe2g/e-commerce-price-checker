@@ -1,4 +1,4 @@
-import React, { AllHTMLAttributes, useState, useCallback } from 'react';
+import React, { AllHTMLAttributes } from 'react';
 import { FiX, FiCheck, FiMoreHorizontal } from 'react-icons/fi'
 import { RatingStar } from "rating-star";
 
